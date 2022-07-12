@@ -174,7 +174,7 @@ export default {
         return moment(date).format('DD-MM-YYYY');
     },
     adddownloadcounter(url){
-            axios.get(`${url}download/`).then(
+            axios.get(`${this.url}download/`).then(
               this.getmorebooks() 
             )
             
@@ -182,7 +182,7 @@ export default {
     },
     getmorebooks(){
 
-      const data = axios.get(`${url}/more`).then((res) => 
+      const data = axios.get(`${this.url}/more`).then((res) => 
       this.books = res.data
       )
      

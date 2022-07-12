@@ -67,12 +67,12 @@
         
         methods:{
             getgenrebooks(){
-                axios.get(`${url}/genres/${this.id}/`).then(res =>
+                axios.get(`${this.url}/genres/${this.id}/`).then(res =>
                     this.books = res.data.books
                 )
             },
             getgenrename(){
-                axios.get(`${url}/genres/${this.id}/`).then(res =>
+                axios.get(`${this.url}/genres/${this.id}/`).then(res =>
                     this.genre = res.data.name
                 )
             },

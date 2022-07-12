@@ -43,12 +43,10 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <router-link to="/signup" class="button is-primary">
-            <strong>Ro'yxatdan o'tish</strong>
+          <router-link to="/upload" class="button is-primary">
+            <strong>Kitob yuklash</strong>
           </router-link>
-          <router-link to="/login" class="button is-light">
-           <strong> Kirish</strong>
-          </router-link>
+        
          
         </div>
       </div>
@@ -72,7 +70,8 @@ import axios from 'axios'
         methods:{
           getgenres(){
             axios.get(`${this.url}/genres/`).then(res =>
-            this.genres = res.data)
+            this.genres = res.data);
+
           }
         },
         mounted(){

@@ -17,7 +17,12 @@ const routes = [
    path:'/genre/:id/',
    name:'Genre',
    component:() => import("@/views/Genres.vue"),
-  }
+  },
+  {
+    path:'/upload',
+    name:'Upload',
+    component:() => import("@/views/Upload.vue"),
+   }
 ]
 
 const router = createRouter({

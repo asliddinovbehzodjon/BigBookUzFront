@@ -25,11 +25,11 @@
                     </div>
                     <p class="help">Kitob haqida qisqacha kiriting</p>
                 </div>
-                <div class="field">
+                <div class="field mb-3">
                     <p class="control has-icons-left">
                         <span class="select">
-                            <select v-model="categories" required>
-                                <option v-for="genre in genres" :key="genre.id" :value="genre.id" selected>{{genre.name}}</option>
+                            <select v-model="category" required>
+                                <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
                             </select>
                         </span>
                         <span class="icon is-small is-left">
@@ -39,8 +39,8 @@
 
                     <p class="help">Kitob janr(lar)ini kiriting</p>
                 </div>
-                <div class="field">
-                    <div class="file has-name">
+                <div class="field mt-3">
+                    <div class="control file has-name">
                         <label class="file-label">
                             <input class="file-input" @change="uploadFile" ref="image" type="file" name="resume" required>
                             <span class="file-cta">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <div class="file has-name">
+                    <div class="control file has-name">
                         <label class="file-label">
                             <input class="file-input" @change="Fileupload" ref="file" type="file" name="resume" required>
                             <span class="file-cta">
@@ -105,7 +105,7 @@ export default {
             author: '',
             author: '',
             description: '',
-            categories: [],
+            category: null,
             image: null,
             file: null,
 
@@ -129,6 +129,7 @@ export default {
             formData.append('author', this.author);
             formData.append('description', this.description);
             formData.append('file', this.file);
+            formData.append('genre',this.category)
             const headers = {
                 'Content-Type': 'multipart/form-data'
             };
@@ -136,6 +137,7 @@ export default {
                 headers
             }).then((res) => {
                 console.log('Done')
+
             });
 
         }

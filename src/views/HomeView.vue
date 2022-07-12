@@ -164,7 +164,7 @@ export default {
   methods:{
     searchBook(){
          
-          axios.get(`/search/${this.key}/`).then((res) => 
+          axios.get(`${url}/search/${this.key}/`).then((res) => 
               this.searchbooks = res.data
             )
      
@@ -182,7 +182,7 @@ export default {
     },
     getmorebooks(){
 
-      const data = axios.get('/more').then((res) => 
+      const data = axios.get(`${url}/more`).then((res) => 
       this.books = res.data
       )
      

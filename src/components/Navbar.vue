@@ -70,11 +70,12 @@ import axios from 'axios'
                 return {
                     isOpen: false,
                     genres:[],
+                    url:'https://bigbookuz.pythonanywhere.com/api/v1'
                 }
             },
         methods:{
           getgenres(){
-            axios.get('/genres/').then(res =>
+            axios.get(`${url}/genres/`).then(res =>
             this.genres = res.data)
           }
         },

@@ -57,6 +57,7 @@
                 id: this.$route.params.id,
                 books:[],
                 genre:'',
+                url:'https://bigbookuz.pythonanywhere.com/api/v1'
             }
         },
          mounted(){
@@ -66,12 +67,12 @@
         
         methods:{
             getgenrebooks(){
-                axios.get(`/genres/${this.id}/`).then(res =>
+                axios.get(`${url}/genres/${this.id}/`).then(res =>
                     this.books = res.data.books
                 )
             },
             getgenrename(){
-                axios.get(`/genres/${this.id}/`).then(res =>
+                axios.get(`${url}/genres/${this.id}/`).then(res =>
                     this.genre = res.data.name
                 )
             },

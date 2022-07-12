@@ -29,7 +29,7 @@
 
         <div class="navbar-dropdown" >
           <div v-for="genre in genres" :key="genre.id">
-          <router-link class="navbar-item" :to="{ name: 'Genre' ,params:{id:genre.id}}">
+          <router-link    class="navbar-item" :to="{ name: 'Genre' ,params:{id:genre.id}}">
             {{genre.name}}
           </router-link>
           </div>
@@ -86,8 +86,13 @@ import axios from 'axios'
     '$route' () {
       this.isOpen = false;
     
+
+    
      
-    }}
+    },
+   
+    
+    }
 
 
     }

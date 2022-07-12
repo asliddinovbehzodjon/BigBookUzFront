@@ -43,6 +43,9 @@ $footer-padding: 3rem 1.5rem 3rem;
    background-color: $footer-background-color ;
    color: $footer-color;
    padding: $footer-padding;
+  
+  
+  
 }
 a{
     text-decoration: none;

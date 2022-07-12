@@ -2,7 +2,7 @@
   <div>
   <Navbar />
   <div class="section">
-  <router-view/>
+  <router-view :key="$route.fullPath" />
   </div>
   <Footer />
   </div>

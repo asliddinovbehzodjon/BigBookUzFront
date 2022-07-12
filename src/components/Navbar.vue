@@ -49,11 +49,7 @@
           <router-link to="/login" class="button is-light">
            <strong> Kirish</strong>
           </router-link>
-          <router-link class="button is-dark" to="/profile">
-          <strong>
-          <i class="fa fa-user" aria-hidden="true"></i> 
-          Profile</strong>
-          </router-link>
+         
         </div>
       </div>
     </div>

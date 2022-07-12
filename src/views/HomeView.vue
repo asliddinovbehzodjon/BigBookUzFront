@@ -164,7 +164,7 @@ export default {
   methods:{
     searchBook(){
          
-          axios.get(`${url}/search/${this.key}/`).then((res) => 
+          axios.get(`${this.url}/search/${this.key}/`).then((res) => 
               this.searchbooks = res.data
             )
      

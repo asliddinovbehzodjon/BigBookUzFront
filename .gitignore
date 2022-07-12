@@ -1,13 +1,8 @@
 .DS_Store
 node_modules
-/public
-/src
-babel.config.js
-jsconfig.jsconfig
-package-lock.json
-package.json
-README.md
-vue.config.js
+/dist
+
+
 # local env files
 .env.local
 .env.*.local

@@ -136,7 +136,7 @@ export default {
             axios.post('https://bigbookuz.pythonanywhere.com/api/v1/books/', formData, {
                 headers
             }).then((res) => {
-                console.log('Done')
+                this.$router.go('/')
 
             });
 

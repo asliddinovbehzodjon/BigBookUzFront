@@ -132,7 +132,7 @@ export default {
             const headers = {
                 'Content-Type': 'multipart/form-data'
             };
-            axios.post('http://localhost:8000/api/v1/books/', formData, {
+            axios.post('https://bigbookuz.pythonanywhere.com/api/v1/books/', formData, {
                 headers
             }).then((res) => {
                 console.log('Done')

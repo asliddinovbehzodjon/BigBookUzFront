@@ -14,6 +14,12 @@ const routes = [
     component: Signup
   },
   {
+    path:'/book/:id/',
+    name:'BookAbout',
+    component:() => import("@/views/BookAbout.vue"),
+   },
+ 
+  {
    path:'/genre/:id/',
    name:'Genre',
    component:() => import("@/views/Genres.vue"),

@@ -34,11 +34,11 @@
 
             <div class="column is-4 " v-for="book in searchbooks" :key="book.id">
                 <div class="card">
-                    <div class="card-image">
+                    <router-link class="card-image" :to="{ name:'BookAbout' ,params:{ id: book.id}}">
                         <figure class="image is-4by3">
                             <img :src="link+book.image" alt="Kitob rasmi">
                         </figure>
-                    </div>
+                    </router-link>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
@@ -80,11 +80,11 @@
 
             <div class="column is-4 " v-for="book in books" :key="book.id">
                 <div class="card">
-                    <div class="card-image">
+                    <router-link class="card-image" :to="{ name:'BookAbout' ,params:{ id: book.id}}">
                         <figure class="image is-4by3">
                             <img :src="link+book.image" alt="Kitob rasmi">
                         </figure>
-                    </div>
+                    </router-link>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
@@ -117,7 +117,13 @@
         </div>
     </div>
     <!-- Pagination -->
-
+<div class="center mt-3">
+  <div class="pagination">
+  <a href="#">Orqaga</a>
+ 
+  <a href="#">Oldinga</a>
+  </div>
+</div>
     <!-- Favorite -->
 
 </div>
@@ -133,6 +139,32 @@ button {
     border-radius: 15px;
     height: 50px;
 }
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
 </style>
 
 <script>
@@ -152,6 +184,8 @@ export default {
             searchbooks: [],
             link:'https://bigbookuz.pythonanywhere.com' ,
             url: 'https://bigbookuz.pythonanywhere.com/api/v1',
+            next:'',
+            previous:''
         }
     },
 

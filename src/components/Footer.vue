@@ -35,7 +35,7 @@
 </script>
 
 <style lang="scss" scoped>
-$footer-background-color: hsl(141, 53%, 53%);
+$footer-background-color: hsl(153deg, 53%, 53%);
 $footer-color: false;
 $footer-padding: 3rem 1.5rem 3rem;
 

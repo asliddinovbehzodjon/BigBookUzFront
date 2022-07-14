@@ -95,6 +95,7 @@
 
 <script>
 import axios from 'axios'
+import {toast} from 'bulma-toast'
 export default {
     name: 'Upload',
     data() {
@@ -136,6 +137,15 @@ export default {
             axios.post('https://bigbookuz.pythonanywhere.com/api/v1/books/', formData, {
                 headers
             }).then((res) => {
+                toast({
+                    message:'Kitob yuklandi',
+                    duration:2000,
+                    pauseOnHover:true,
+                    dismissible:true,
+                    position:'bottom-right',
+                    type:'is-success'
+
+                })
                 this.$router.go('/')
 
             });

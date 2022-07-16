@@ -70,7 +70,7 @@ import axios from 'axios'
         methods:{
           getgenres(){
             axios.get(`${this.url}/genres/`).then(res =>
-            this.genres = res.data);
+            this.genres = res.data.results);
 
           }
         },

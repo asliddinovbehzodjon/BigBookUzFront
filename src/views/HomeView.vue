@@ -73,7 +73,7 @@
             <div class="pagination">
                 <a @click="searchprevious()">Orqaga</a>
                 <a>{{searchcurrent_page_num}} ta {{searchall_pages}} dan</a>
-                <a @click="searchnext()">Oldinga</a>
+                <a @click="searchsnext()">Oldinga</a>
             </div>
         </div>
     </div>
@@ -240,7 +240,7 @@ export default {
                 this.searchBook()
             }
         },
-        morenext() {
+        searchsnext() {
             if (this.searchnext) {
                 axios.get(this.searchnext).then(res => {
                     this.searchbooks = res.data.results,

@@ -74,9 +74,9 @@ export default {
         return {
             id: this.$route.params.id,
             ids:'',
-            havola:'https://bigbookuz.pythonanywhere.com',
-            url: 'https://bigbookuz.pythonanywhere.com/api/v1/books/',
-            link:'https://bigbookuz.pythonanywhere.com/api/v1/moregenre/',
+            havola:this.$store.state.siteURL,
+            url: `${this.$store.state.siteURL}/api/v1/books/`,
+            link:`${this.$store.state.siteURL}/api/v1/books/moregenre/`,
             book: '',
             likebooks:''
         }

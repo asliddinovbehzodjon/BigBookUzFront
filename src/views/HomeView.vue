@@ -7,7 +7,7 @@
                     <div class="field has-text-centered mt-5">
 
                         <div class="control">
-                            <input class="input has-text-centered" type="text" placeholder="Kitob qidirish uchun so'z kiriting 🔎" v-model="key">
+                            <input class="input has-text-centered" type="text" placeholder="Kitob qidirish uchun so'z kiriting 🔎" v-model="key" required>
 
                         </div>
                     </div>
@@ -34,23 +34,20 @@
 
             <div class="column is-4 " v-for="book in searchbooks" :key="book.id">
                 <div class="card">
-                    <router-link class="card-image" :to="{ name:'BookAbout' ,params:{ id: book.id}}">
+                    <!-- <router-link class="card-image" :to="{ name:'BookAbout' ,params:{ id: book.id}}">
                         <figure class="image is-4by3">
                             <img :src="link+book.image" alt="Kitob rasmi">
                         </figure>
-                    </router-link>
+                    </router-link> -->
                     <div class="card-content">
-                        <div class="media">
+                       
+                        <router-link class="media" :to="{name:'BookAbout',params:{id:book.id}}">
                             <div class="media-left">
                                 <figure class="image is-48x48">
                                     <img :src="link+book.image" alt="Kitob rasmi">
                                 </figure>
                             </div>
-                            <div class="media-content">
-                                <p class="title is-4">{{book.name}}</p>
-                                <p class="subtitle is-6">{{book.author}}</p>
-                            </div>
-                        </div>
+                            </router-link>
 
                         <div class="content">
                             <p> {{book.description}}</p>
@@ -87,13 +84,13 @@
 
             <div class="column is-4 " v-for="book in books" :key="book.id">
                 <div class="card">
-                    <router-link class="card-image" :to="{ name:'BookAbout' ,params:{ id: book.id}}">
+                    <!-- <router-link class="card-image" :to="{ name:'BookAbout' ,params:{ id: book.id}}">
                         <figure class="image is-4by3">
                             <img :src="link+book.image" alt="Kitob rasmi">
                         </figure>
-                    </router-link>
+                    </router-link> -->
                     <div class="card-content">
-                        <div class="media">
+                        <router-link class="media" :to="{name:'BookAbout',params:{id:book.id}}">
                             <div class="media-left">
                                 <figure class="image is-48x48">
                                     <img :src="link+book.image" alt="Kitob rasmi">
@@ -103,7 +100,7 @@
                                 <p class="title is-4">{{book.name}}</p>
                                 <p class="subtitle is-6">{{book.author}}</p>
                             </div>
-                        </div>
+                        </router-link>
 
                         <div class="content">
                             <p> {{book.description}}</p>
@@ -196,8 +193,8 @@ export default {
             books: [],
             key: '',
             searchbooks: [],
-            link: 'https://bigbookuz.pythonanywhere.com',
-            url: 'https://bigbookuz.pythonanywhere.com/api/v1',
+            link: this.$store.state.siteURL,
+            url: `${this.$store.state.siteURL}/api/v1`,
             next: '',
             previous: '',
             count: '',

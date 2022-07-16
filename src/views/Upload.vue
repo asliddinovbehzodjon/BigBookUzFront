@@ -29,7 +29,7 @@
                     <p class="control has-icons-left">
                         <span class="select">
                             <select v-model="category" required>
-                                <option  selected v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+                                <option selected v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
                             </select>
                         </span>
                         <span class="icon is-small is-left">
@@ -75,7 +75,9 @@
                         </label>
                     </div>
                 </div>
-
+                <div class="notification is-danger" v-if="errors.length">
+                <p v-for="error in errors" :key="error">{{error}}</p>
+                </div>
                 <div class="field">
 
                     <div class="control has-text-centered">
@@ -95,7 +97,9 @@
 
 <script>
 import axios from 'axios'
-import {toast} from 'bulma-toast'
+import {
+    toast
+} from 'bulma-toast'
 export default {
     name: 'Upload',
     data() {
@@ -103,6 +107,7 @@ export default {
             genres: [],
             url: 'https://bigbookuz.pythonanywhere.com/api/v1',
             name: '',
+            errors: [],
             author: '',
             author: '',
             description: '',
@@ -120,10 +125,10 @@ export default {
             this.file = this.$refs.file.files[0];
         },
         getgenres() {
-            axios.get(`${this.url}/genres/`).then(res =>
-               { this.genres = res.data.results
-               
-               })
+            axios.get(`${this.url}/genres/`).then(res => {
+                this.genres = res.data.results
+
+            })
         },
         SubmitForm() {
             const formData = new FormData();
@@ -132,7 +137,7 @@ export default {
             formData.append('author', this.author);
             formData.append('description', this.description);
             formData.append('file', this.file);
-            formData.append('genre',this.category)
+            formData.append('genre', this.category)
             const headers = {
                 'Content-Type': 'multipart/form-data'
             };
@@ -140,17 +145,27 @@ export default {
                 headers
             }).then((res) => {
                 toast({
-                    message:'Kitob yuklandi',
-                    duration:2000,
-                    pauseOnHover:true,
-                    dismissible:true,
-                    position:'bottom-right',
-                    type:'is-success'
+                    message: 'Kitob yuklandi',
+                    duration: 2000,
+                    pauseOnHover: true,
+                    dismissible: true,
+                    position: 'bottom-right',
+                    type: 'is-success'
 
                 })
                 this.$router.go('/')
 
-            });
+            }).catch(error => {
+                if (error.response) {
+                    for (const property in error.response.data) {
+                        this.errors.push(`${property} : ${error.response.data[property]}`)
+
+                    } 
+                }
+                else if (error.message) {
+                        this.errors.push('Nimadir xato ketdi')
+                    }
+            })
 
         }
 

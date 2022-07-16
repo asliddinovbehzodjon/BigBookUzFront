@@ -6,13 +6,9 @@
 
 <div class="column is-4 " v-for="book in books" :key="book.id">
 <div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img :src="book.image"    alt="Kitob rasmi">
-    </figure>
-  </div>
+  
   <div class="card-content">
-    <div class="media">
+    <router-link class="media" :to="{name:'BookAbout',params:{id:book.id}}">
       <div class="media-left">
         <figure class="image is-48x48">
           <img :src="book.image" alt="Kitob rasmi">
@@ -22,7 +18,7 @@
         <p class="title is-4">{{book.name}}</p>
         <p class="subtitle is-6">{{book.author}}</p>
       </div>
-    </div>
+    </router-link>
 
     <div class="content">
     <p> {{book.description}}</p>
@@ -57,7 +53,7 @@
                 id: this.$route.params.id,
                 books:[],
                 genre:'',
-                url:'https://bigbookuz.pythonanywhere.com/api/v1'
+                url:`${this.$store.state.siteURL}/api/v1/`
             }
         },
          mounted(){

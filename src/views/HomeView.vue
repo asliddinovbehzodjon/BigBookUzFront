@@ -54,7 +54,7 @@
 
                         <div class="content">
                             <p> {{book.description}}</p>
-                            <p>Kitob janrlari</p>
+                            <p>Kitob janri </p>
                             <br>
                             <time datetime="2016-1-1">{{formatDate(book.uploaded_at)}}</time>
                         </div>
@@ -107,7 +107,7 @@
 
                         <div class="content">
                             <p> {{book.description}}</p>
-                            <p>Kitob janri: {{book.genre}}</p>
+                            <p>Kitob janri:</p>
                             <br>
                             <time datetime="2016-1-1">{{formatDate(book.uploaded_at)}}</time>
                         </div>

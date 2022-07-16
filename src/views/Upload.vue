@@ -121,7 +121,9 @@ export default {
         },
         getgenres() {
             axios.get(`${this.url}/genres/`).then(res =>
-                this.genres = res.data)
+               { this.genres = res.data.results,
+                 console.log(this.genres)
+               })
         },
         SubmitForm() {
             const formData = new FormData();

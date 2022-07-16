@@ -1,5 +1,5 @@
 <template>
-<div>
+
     <div class="container">
         <form @submit.prevent="searchBook">
             <div class="columns">
@@ -131,7 +131,7 @@
     </div>
     <!-- Favorite -->
 
-</div>
+
 </template>
 
 <style scoped>

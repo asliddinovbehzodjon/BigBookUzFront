@@ -29,7 +29,7 @@
 
     <!-- Searched books -->
     <div class="container mt-3" v-if="searchbooks.length">
-        <h1 class="has-text-centered title" style="color:green">Qidirilgan kitoblar</h1>
+        <h1 class="has-text-centered title" style="color:green">Qidirilgan kitoblar ({{searchcount}})</h1>
         <div class="columns is-multiline ">
 
             <div class="column is-4 " v-for="book in searchbooks" :key="book.id">

@@ -29,7 +29,7 @@
                     <p class="control has-icons-left">
                         <span class="select">
                             <select v-model="category" required>
-                                <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+                                <option  selected v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
                             </select>
                         </span>
                         <span class="icon is-small is-left">

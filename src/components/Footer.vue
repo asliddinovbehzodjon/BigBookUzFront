@@ -5,7 +5,7 @@
   <div class="column is-3 is-offset-3">
   <h1 class="is-uppercase">Ijtimoiy tarmoqlar</h1>
   <ul>
-  <a href=""  style="font-size:18px;color:blue"><i class="fab fa-telegram"  aria-hidden="true"></i> Telegram</a><br>
+  <a href="https://t.me/Bekhzod_asliddinov" target="_blank"  style="font-size:18px;color:blue"><i class="fab fa-telegram"  aria-hidden="true"></i> Telegram</a><br>
   <a href=""  style="font-size:18px;color:red;"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a><br>
   <a href=""  style="font-size:18px;color:blue"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a><br>
 
@@ -43,6 +43,7 @@ $footer-padding: 3rem 1.5rem 3rem;
    background-color: $footer-background-color ;
    color: $footer-color;
    padding: $footer-padding;
+   flex-shrink: 0;  
   
   
   

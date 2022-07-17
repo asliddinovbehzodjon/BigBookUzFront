@@ -79,7 +79,8 @@
     <div class="center mt-3">
         <div class="pagination">
             <a @click="moreprevious()">Orqaga</a>
-            <a>{{current_page_num}} ta {{all_pages}} dan</a>
+            <a v-if="current_page_num">{{current_page_num}} ta {{all_pages}} dan</a>
+        <a v-else>0 ta 0 dan</a>
             <a @click="morenext()">Oldinga</a>
         </div>
     </div>

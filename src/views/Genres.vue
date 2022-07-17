@@ -57,21 +57,19 @@
             }
         },
          mounted(){
-            this.getgenrebooks(),
-            this.getgenrename()
+            this.getgenrebooks()
+            
         },
         
         methods:{
             getgenrebooks(){
                 axios.get(`${this.url}/genres/${this.id}/`).then(res =>
-                    this.books = res.data.books
-                )
-            },
-            getgenrename(){
-                axios.get(`${this.url}/genres/${this.id}/`).then(res =>
+                    {this.books = res.data.genres,
                     this.genre = res.data.name
+                    }
                 )
             },
+           
              formatDate(date) {
                       return moment(date).format('DD-MM-YYYY');
                  },

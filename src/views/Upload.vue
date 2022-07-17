@@ -1,5 +1,9 @@
 <template>
 <div class="container mt-3">
+    <div class="is-loading-bar has-text-centered" v-bind:class="{'is-loading': $store.state.isLoading }">
+        <div class="lds-dual-ring"></div>
+    </div>
+
     <div class="columns">
         <div class="column is-4 is-offset-4">
 
@@ -29,7 +33,7 @@
                     <p class="control has-icons-left">
                         <span class="select">
                             <select v-model="category" required>
-                                <option selected v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+                                <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
                             </select>
                         </span>
                         <span class="icon is-small is-left">
@@ -76,7 +80,7 @@
                     </div>
                 </div>
                 <div class="notification is-danger" v-if="errors.length">
-                <p v-for="error in errors" :key="error">{{error}}</p>
+                    <p v-for="error in errors" :key="error">{{error}}</p>
                 </div>
                 <div class="field">
 
@@ -131,13 +135,16 @@ export default {
             })
         },
         SubmitForm() {
-            const formData = new FormData();
+            this.$store.commit('setLoading', true)
+            this.errors = []
+            const formData = new FormData()
             formData.append('image', this.image);
             formData.append('name', this.name);
             formData.append('author', this.author);
             formData.append('description', this.description);
             formData.append('file', this.file);
             formData.append('genre', this.category)
+            console.log(this.category)
             const headers = {
                 'Content-Type': 'multipart/form-data'
             };
@@ -160,12 +167,12 @@ export default {
                     for (const property in error.response.data) {
                         this.errors.push(`${property} : ${error.response.data[property]}`)
 
-                    } 
-                }
-                else if (error.message) {
-                        this.errors.push('Nimadir xato ketdi')
                     }
+                } else if (error.message) {
+                    this.errors.push('Nimadir xato ketdi')
+                }
             })
+            this.$store.commit('setLoading', false)
 
         }
 
@@ -187,5 +194,44 @@ input {
 h1 {
     color: #fff;
     font-size: 20px;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #ccc;
+    border-color: #ccc transparent #ccc transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.is-loading-bar {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
+    &.is-loading {
+        height: 80px;
+    }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-   <nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
+   <nav class="navbar is-success is-top-fixed " role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <router-link class="navbar-item" to="/">
      <h1 > <strong class="is-dark">BigBook</strong></h1>
@@ -102,5 +102,8 @@ import axios from 'axios'
 h1{
   color: #fff;
   font-size: 20px;
+}
+.navbar{
+ 
 }
 </style>

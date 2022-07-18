@@ -94,7 +94,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            ids:'',
+            genre_id:'',
             havola:this.$store.state.siteURL,
             url: `${this.$store.state.siteURL}/api/v1/books/`,
             link:`${this.$store.state.siteURL}/api/v1/moregenre/`,
@@ -143,10 +143,13 @@ export default {
         async getbook() {
             await axios.get(`${this.url}${this.id}`).then(response => {
                 this.book = response.data,
-                this.ids=response.data.genre.id
+                this.genre_id = response.data.genre
+                
+                
+                
                 
             })
-            await axios.get(`${this.link}${this.ids}/`).then(res => {
+            await axios.get(`${this.link}${this.genre_id}/${this.id}/`).then(res => {
                 this.likebooks = res.data.results,
                 this.count = res.data.count,
                 this.next = res.data.next,

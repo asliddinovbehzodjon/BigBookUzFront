@@ -11,7 +11,7 @@ export default createStore({
   },
   mutations: {
     setLoading(state,status){
-      state.isLoading = status
+      state.isLoading=status
     }
     
   },

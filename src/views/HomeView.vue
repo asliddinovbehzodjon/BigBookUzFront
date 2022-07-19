@@ -52,15 +52,18 @@
                         </div>
                     </router-link>
                     <div class="content">
-                        <p> {{book.description}}</p>
-                        <p>Kitob janri </p>
-                        <br>
-                        <time datetime="2016-1-1">{{formatDate(book.uploaded_at)}}</time>
+                         <p> {{book.description}}</p>
+
+                        <p>Kitob hajmi: {{book.filesize}} </p>
+                        <a :href="link+book.audio" target="_blank" v-if="book.audio" download>Kitobning audio varianti</a><br>
+
+                        <time datetime="2016-1-1">Kitob yuklangan sana: {{formatDate(book.uploaded_at)}}</time>
+
                     </div>
                 </div>
 
                 <footer class="card-footer">
-                    <a :href="book.file" class="card-footer-item" @click="adddownloadcounter(book.url)" target="_blank" download><i class="fa fa-download"></i>{{book.downloaded}}</a>
+                    <a :href="link+book.file" class="card-footer-item" @click="adddownloadcounter(book.url)" target="_blank" download><i class="fa fa-download"></i>{{book.downloaded}}</a>
                     <a href="#" class="card-footer-item"><i class="fa fa-eye"></i> {{book.viewed}}</a>
                     <a href="#" class="card-footer-item"><i class="fas fa-share"></i>{{book.shared}}</a>
                 </footer>
@@ -71,8 +74,8 @@
     <div class="center mt-3">
         <div class="pagination">
             <a @click="searchprevious()">Orqaga</a>
-          <a v-if="searchcurrent_page_num">{{searchcurrent_page_num}} ta {{searchall_pages}} dan</a>
-        <a v-else>0 ta 0 dan</a>
+            <a v-if="searchcurrent_page_num">{{searchcurrent_page_num}} ta {{searchall_pages}} dan</a>
+            <a v-else>0 ta 0 dan</a>
             <a @click="searchsnext()">Oldinga</a>
         </div>
     </div>
@@ -101,15 +104,16 @@
                     </router-link>
 
                     <div class="content">
-                        <p> {{book.description}}</p>
-                        <p>Kitob janri:</p>
-                        <br>
-                        <time datetime="2016-1-1">{{formatDate(book.uploaded_at)}}</time>
+                        <p>{{book.description}}</p>
+                        <p>Kitob hajmi: {{book.filesize}} </p>
+                        <a :href="link+book.audio" target="_blank" v-if="book.audio" download>Kitobning audio varianti</a><br>
+
+                        <time datetime="2016-1-1">Kitob yuklangan sana: {{formatDate(book.uploaded_at)}}</time>
                     </div>
                 </div>
 
                 <footer class="card-footer">
-                    <a :href="book.file" class="card-footer-item" @click="adddownloadcounter(book.url)" target="_blank" download><i class="fa fa-download"></i>{{book.downloaded}}</a>
+                    <a :href="link+book.file" class="card-footer-item" @click="adddownloadcounter(book.url)" target="_blank" download><i class="fa fa-download"></i>{{book.downloaded}}</a>
                     <a href="#" class="card-footer-item"><i class="fa fa-eye"></i> {{book.viewed}}</a>
                     <a href="#" class="card-footer-item"><i class="fas fa-share"></i>{{book.shared}}</a>
                 </footer>
@@ -204,105 +208,113 @@ export default {
             searchcurrent_page_num: ''
         }
     },
-
+    
     methods: {
-        moreprevious() {
-            if (this.previous) {
-                axios.get(this.previous).then(res => {
-                    this.books = res.data.results,
-                        this.count = res.data.count,
-                        this.next = res.data.next,
-                        this.previous = res.data.previous,
-                        this.all_pages = res.data.all_pages,
-                        this.current_page_num = res.data.current_page_num
-                })
-            } else {
-                this.getmorebooks()
-            }
-        },
-        searchprevious() {
-            if (this.searchprevious) {
-                axios.get(this.previous).then(res => {
-                    this.searchbooks = res.data.results,
-                        this.searchcount = res.data.count,
-                        this.searchnext = res.data.next,
-                        this.searchprevious = res.data.previous,
-                        this.searchall_pages = res.data.all_pages,
-                        this.searchcurrent_page_num = res.data.current_page_num
-                })
-            } else {
-                this.searchBook()
-            }
-        },
-        searchsnext() {
-            if (this.searchnext) {
-                axios.get(this.searchnext).then(res => {
-                    this.searchbooks = res.data.results,
-                        this.searchcount = res.data.count,
-                        this.searchnext = res.data.next,
-                        this.searchprevious = res.data.previous,
-                        this.searchall_pages = res.data.all_pages,
-                        this.searchcurrent_page_num = res.data.current_page_num
-                })
-            } else {
-
-            }
-        },
-        morenext() {
-            if (this.next) {
-                axios.get(this.next).then(res => {
-                    this.books = res.data.results,
-                        this.count = res.data.count,
-                        this.next = res.data.next,
-                        this.previous = res.data.previous,
-                        this.all_pages = res.data.all_pages,
-                        this.current_page_num = res.data.current_page_num
-                })
-            } else {
-
-            }
-        },
-        searchBook() {
-
-            axios.get(`${this.url}/search/${this.key}/`).then((res) => {
-                    this.searchbooks = res.data.results,
-                        this.searchcount = res.data.count,
-                        this.searchnext = res.data.next,
-                        this.searchprevious = res.data.previous,
-                        this.searchall_pages = res.data.all_pages,
-                        this.searchcurrent_page_num = res.data.current_page_num
+    
+            moreprevious() {
+                if (this.previous) {
+                    axios.get(this.previous).then(res => {
+                        this.books = res.data.results,
+                            this.count = res.data.count,
+                            this.next = res.data.next,
+                            this.previous = res.data.previous,
+                            this.all_pages = res.data.all_pages,
+                            this.current_page_num = res.data.current_page_num
+                    })
+                } else {
+                    this.getmorebooks()
+                }
+            },
+            searchprevious() {
+                if (this.searchprevious) {
+                    axios.get(this.previous).then(res => {
+                        this.searchbooks = res.data.results,
+                            this.searchcount = res.data.count,
+                            this.searchnext = res.data.next,
+                            this.searchprevious = res.data.previous,
+                            this.searchall_pages = res.data.all_pages,
+                            this.searchcurrent_page_num = res.data.current_page_num
+                    })
+                } else {
+                    this.searchBook()
+                }
+            },
+            searchsnext() {
+                if (this.searchnext) {
+                    axios.get(this.searchnext).then(res => {
+                        this.searchbooks = res.data.results,
+                            this.searchcount = res.data.count,
+                            this.searchnext = res.data.next,
+                            this.searchprevious = res.data.previous,
+                            this.searchall_pages = res.data.all_pages,
+                            this.searchcurrent_page_num = res.data.current_page_num
+                    })
+                } else {
 
                 }
+            },
+            morenext() {
+                if (this.next) {
+                    axios.get(this.next).then(res => {
+                        this.books = res.data.results,
+                            this.count = res.data.count,
+                            this.next = res.data.next,
+                            this.previous = res.data.previous,
+                            this.all_pages = res.data.all_pages,
+                            this.current_page_num = res.data.current_page_num
+                    })
+                } else {
 
-            )
+                }
+            },
+            searchBook() {
 
-        },
+                axios.get(`${this.url}/search/${this.key}/`).then((res) => {
+                        this.searchbooks = res.data.results,
+                            this.searchcount = res.data.count,
+                            this.searchnext = res.data.next,
+                            this.searchprevious = res.data.previous,
+                            this.searchall_pages = res.data.all_pages,
+                            this.searchcurrent_page_num = res.data.current_page_num
 
-        formatDate(date) {
-            return moment(date).format('DD-MM-YYYY');
-        },
-        adddownloadcounter(url) {
-            axios.get(`${this.url}download/`).then(
-                this.getmorebooks()
-            )
+                    }
 
-        },
-        getmorebooks() {
+                )
 
-            const data = axios.get(`${this.url}/more`).then((res) => {
-                this.books = res.data.results,
-                    this.count = res.data.count,
-                    this.next = res.data.next,
-                    this.previous = res.data.previous,
-                    this.all_pages = res.data.all_pages,
-                    this.current_page_num = res.data.current_page_num
+            },
 
-            })
+            formatDate(date) {
+                return moment(date).format('DD-MM-YYYY');
+            },
+            adddownloadcounter(url) {
+                axios.get(`${this.url}download/`).then(
+                    this.getmorebooks()
+                )
 
-        }
+            },
+            getmorebooks() {
+
+                const data = axios.get(`${this.url}/more`).then((res) => {
+                    this.books = res.data.results,
+                        this.count = res.data.count,
+                        this.next = res.data.next,
+                        this.previous = res.data.previous,
+                        this.all_pages = res.data.all_pages,
+                        this.current_page_num = res.data.current_page_num
+
+                })
+
+            }
     },
     mounted() {
         this.getmorebooks();
-    }
+    },
+    filters: {
+        truncate: function(data,num){
+            const reqdString = 
+              data.split("").slice(0, num).join("") + "....";
+            return reqdString;
+        }
+    },
 }
 </script>

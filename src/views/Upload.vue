@@ -134,8 +134,9 @@ export default {
 
             })
         },
-        SubmitForm() {
+        async SubmitForm() {
             this.$store.commit('setLoading', true)
+            console.log('Working....')
             this.errors = []
             const formData = new FormData()
             formData.append('image', this.image);
@@ -144,13 +145,13 @@ export default {
             formData.append('description', this.description);
             formData.append('file', this.file);
             formData.append('genre', this.category)
-            console.log(this.category)
+            
             const headers = {
                 'Content-Type': 'multipart/form-data'
             };
-            axios.post('https://bigbookuz.pythonanywhere.com/api/v1/books/', formData, {
+            await axios.post(`${this.$store.state.siteURL}/api/v1/books/`, formData, {
                 headers
-            }).then((res) => {
+            }).then(res => {
                 toast({
                     message: 'Kitob yuklandi',
                     duration: 2000,
@@ -173,6 +174,7 @@ export default {
                 }
             })
             this.$store.commit('setLoading', false)
+            
 
         }
 

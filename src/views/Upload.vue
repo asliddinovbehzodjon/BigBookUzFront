@@ -13,21 +13,21 @@
                     <div class="control">
                         <input class="input" type="text" placeholder="Kitob nomini kiriting" v-model="name" required>
                     </div>
-                    <p class="help">Kitob nomini kiriting</p>
+                    <p class="help">Kitob nomini kiriting(majburiy)</p>
                 </div>
                 <div class="field">
                     <label class="label has-text-centered">Kitob muallifini kiriting</label>
                     <div class="control">
                         <input class="input" type="text" placeholder="Kitob muallifini kiriting" v-model="author" required>
                     </div>
-                    <p class="help">Kitob muallifini kiriting</p>
+                    <p class="help">Kitob muallifini kiriting(majburiy)</p>
                 </div>
                 <div class="field">
                     <label class="label has-text-centered">Kitob haqida qisqacha kiriting</label>
                     <div class="control">
                         <input class="input" type="text" placeholder="Kitob haqida qisqacha kiriting" v-model="description" required>
                     </div>
-                    <p class="help">Kitob haqida qisqacha kiriting</p>
+                    <p class="help">Kitob haqida qisqacha kiriting(majburiy)</p>
                 </div>
                 <div class="field mb-3">
                     <p class="control has-icons-left">
@@ -41,7 +41,7 @@
                         </span>
                     </p>
 
-                    <p class="help">Kitob janr(lar)ini kiriting</p>
+                    <p class="help">Kitob janrini kiriting</p>
                 </div>
                 <div class="field mt-3">
                     <div class="control file has-name">
@@ -60,8 +60,28 @@
                             </span>
                         </label>
                     </div>
+                      <p class="help">Kitob rasmini kiriting(majburiy)</p>
                 </div>
-                <div class="field">
+                <div class="field mt-3">
+                    <div class="control file has-name">
+                        <label class="file-label">
+                            <input class="file-input" @change="uploadAudio" ref="audio" type="file" name="resume" required>
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    Kitobning audio variantini yuklang.
+                                </span>
+                            </span>
+                            <span class="file-name">
+                                BigBook.mp3
+                            </span>
+                        </label>
+                    </div>
+                      <p class="help">Kitobning audio variantini kiriting(majburiy emas)</p>
+                </div>
+                <div class="field mt-3">
                     <div class="control file has-name">
                         <label class="file-label">
                             <input class="file-input" @change="Fileupload" ref="file" type="file" name="resume" required>
@@ -78,6 +98,7 @@
                             </span>
                         </label>
                     </div>
+                    <p class="help">Kitob faylini kiriting:doc.docx.pdf(majburiy)</p>
                 </div>
                 <div class="notification is-danger" v-if="errors.length">
                     <p v-for="error in errors" :key="error">{{error}}</p>
@@ -117,13 +138,18 @@ export default {
             description: '',
             category: null,
             image: null,
+            audio:null,
             file: null,
+
 
         }
     },
     methods: {
         uploadFile() {
             this.image = this.$refs.image.files[0];
+        },
+        uploadAudio() {
+            this.audio = this.$refs.audio.files[0];
         },
         Fileupload() {
             this.file = this.$refs.file.files[0];
@@ -145,6 +171,7 @@ export default {
             formData.append('description', this.description);
             formData.append('file', this.file);
             formData.append('genre', this.category)
+            formData.append('audio',this.audio)
             
             const headers = {
                 'Content-Type': 'multipart/form-data'

@@ -27,8 +27,8 @@
                 </div>
                 <footer class="card-footer">
                     <a :href="book.file" class="card-footer-item" @click="adddownloadcounter(book.url)" target="_blank" download><i class="fa fa-download"></i>{{book.downloaded}}</a>
-                    <a href="#" class="card-footer-item"><i class="fa fa-eye"></i> {{book.viewed}}</a>
-                    <a href="#" class="card-footer-item"><i class="fas fa-share"></i>{{book.shared}}</a>
+                    <a  class="card-footer-item"><i class="fa fa-eye"></i> {{book.viewed}}</a>
+                    <a  class="card-footer-item"><i class="fas fa-share"></i>{{book.shared}}</a>
                 </footer>
             </div>
         </div>

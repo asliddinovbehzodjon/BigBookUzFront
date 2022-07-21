@@ -8,11 +8,11 @@
             <h3>BigBook</h3>
 
             <p class="footer-links"> 
-                <router-link to="/">Asosiy sahifa</router-link>
+                <router-link class="banker" to="/">Asosiy sahifa</router-link>
 
-                <router-link to="/news">Yangiliklar</router-link>
+                <router-link class="banker" to="/news">Yangiliklar</router-link>
 
-                <router-link to="/upload">Kitob yuklash</router-link>
+                <router-link class="banker" to="/upload">Kitob yuklash</router-link>
             </p>
 
             <p class="footer-company-name">BigBook © 2022</p>
@@ -43,10 +43,10 @@
 
             <div class="footer-icons">
 
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/behzodasliddinov.uz/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                 
                
-                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://t.me/Bekhzod_Asliddinov" target="_blank"><i class="fa-brands fa-telegram"></i></a>
 
             </div>
 
@@ -85,7 +85,9 @@ export default {
    
   
 }
-
+.footer-company-about{
+    color:#fff;
+}
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
 .footer-distributed .footer-right {
@@ -111,9 +113,13 @@ export default {
 .footer-distributed h3 span {
     color: lightseagreen;
 }
-
+.banker:first-child::after{
+    content: "|";
+}
 /* Footer links */
-
+.banker:nth-child(2)::after{
+    content: " |";
+}
 .footer-distributed .footer-links {
     color: #ffffff;
     margin: 20px 0 12px;
@@ -199,7 +205,9 @@ export default {
 .footer-distributed .footer-right {
     width: 20%;
 }
-
+.footer-company-about{
+    color:#fff;
+}
 .footer-distributed .footer-company-about {
     line-height: 20px;
     color: #92999f;

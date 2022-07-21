@@ -73,7 +73,7 @@
     </div>
     <div class="center mt-3">
         <div class="pagination">
-            <a @click="searchprevious()">Orqaga</a>
+            <a @click="searchsprevious()">Orqaga</a>
             <a v-if="searchcurrent_page_num">{{searchcurrent_page_num}} ta {{searchall_pages}} dan</a>
             <a v-else>0 ta 0 dan</a>
             <a @click="searchsnext()">Oldinga</a>
@@ -225,9 +225,9 @@ export default {
                     this.getmorebooks()
                 }
             },
-            searchprevious() {
+            searchsprevious() {
                 if (this.searchprevious) {
-                    axios.get(this.previous).then(res => {
+                    axios.get(this.searchprevious).then(res => {
                         this.searchbooks = res.data.results,
                             this.searchcount = res.data.count,
                             this.searchnext = res.data.next,

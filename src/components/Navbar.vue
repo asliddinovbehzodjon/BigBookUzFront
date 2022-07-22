@@ -43,6 +43,9 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+         <a  href="https://t.me/bigbookuzbot" class="button is-primary" target="_blank">
+            <strong><i class="fa-brands fa-telegram" style="margin-right:2px;"></i> Kutubxona(Telegram)</strong>
+          </a>
           <router-link to="/upload" class="button is-primary">
             <strong>Kitob yuklash</strong>
           </router-link>

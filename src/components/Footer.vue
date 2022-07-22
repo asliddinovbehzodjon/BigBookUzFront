@@ -23,27 +23,31 @@
            
 
             <div>
-                <i class="fa-solid fa-phone-flip"></i>
-                <p> +998991160434</p>
+                
+                <p><i class="fa-solid fa-phone-flip" style="margin-right:2px;"></i> +998991160434</p>
             </div>
 
-            <div>
-                <i class="fa-solid fa-envelope"></i> 
-                <p class="test"><a href="mailto:behzodtuit@gmail.com"> behzodtuit@gmail.com</a></p>
+            <div class="mt-3">
+                
+                <p class="test"><a href="mailto:behzodtuit@gmail.com" style="color:#fff;"><i class="fa-solid fa-envelope" style="margin-right:2px;"></i>  behzodtuit@gmail.com</a></p>
+            </div>
+           <div class="mt-3">
+                
+                <a href="https://behzodasliddinov.uz" target="_blank" style="color:#fff;"><i class="fa-solid fa-globe" style="margin-right:2px;"></i> behzodasliddinov.uz</a>
             </div>
 
         </div>
 
         <div class="footer-right">
 
-            <p class="footer-company-about">
+            <p class="footer-company-about" style="color:#fff;font-size:15px;">
                 <span>Biz haqimizda</span>
                Kitobxonlarga kitob ulashish va ularni bilim salohiyatini o'sishiga yordam berish!
             </p>
 
             <div class="footer-icons">
 
-                <a href="https://www.facebook.com/behzodasliddinov.uz/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.facebook.com/behzodasliddinov.uz/" target="_blank"><i class="fa-brands fa-facebook" style="color:#fff;"></i></a>
                 
                
                 <a href="https://t.me/Bekhzod_Asliddinov" target="_blank"><i class="fa-brands fa-telegram"></i></a>

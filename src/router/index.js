@@ -28,7 +28,10 @@ const routes = [
     path:'/upload',
     name:'Upload',
     component:() => import("@/views/Upload.vue"),
-   }
+   },
+  { path: '/:catchAll(.*)',
+    name:'NotFound',
+    component: () => import('@/views/NotFound.vue') },
 ]
 
 const router = createRouter({
